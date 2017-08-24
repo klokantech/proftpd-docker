@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  proftp:
+    build: 
+      context: ..
+      dockerfile: Dockerfile.proftpd
+    image: klokan/proftpd
+    restart: "no"
+    ports:
+      - "20:20"
+      - "21:21"
+      - "20020:20080"
+    environment:
+      PROFTPD_MYSQL_DB: proftpd@mariadb
+      PROFTPD_MYSQL_USER: proftpd
+      PROFTPD_MYSQL_PASSWORD: nbusr123
+  mariadb:
+     image: mariadb:10
+     environment:
+       MYSQL_ROOT_PASSWORD: secret
+       # create database on startup
+       MYSQL_DATABASE: proftpd
+       MYSQL_USER: proftpd
+       MYSQL_PASSWORD: nbusr123
+     ports:
+      - "3306:3306"
+     volumes: 
+        - ./sql.d/:/docker-entrypoint-initdb.d/
