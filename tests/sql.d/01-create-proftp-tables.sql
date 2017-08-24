@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS ftpgroup (
 
 -- from http://www.proftpd.org/docs/contrib/mod_quotatab_sql.html
 
-CREATE TABLE quotalimits (
+CREATE TABLE ftpquotalimits (
       name VARCHAR(30),
       quota_type ENUM("user", "group", "class", "all") NOT NULL,
       per_session ENUM("false", "true") NOT NULL DEFAULT "false",
@@ -46,7 +46,7 @@ CREATE TABLE quotalimits (
       files_xfer_avail INT UNSIGNED NOT NULL DEFAULT 0
     );
 
-CREATE TABLE quotatallies (
+CREATE TABLE ftpquotatallies (
       name VARCHAR(30) NOT NULL,
       quota_type ENUM("user", "group", "class", "all") NOT NULL,
       bytes_in_used FLOAT NOT NULL,
