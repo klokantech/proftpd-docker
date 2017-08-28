@@ -1,0 +1,35 @@
+# ruby
+#
+#
+#USE_NFS = 0  # safer
+USE_NFS = 1  # faster
+ 
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+
+  config.vm.provider "virtualbox" do |v|
+     v.linked_clone = true
+     v.memory = 3192
+  end
+
+  if USE_NFS
+    config.vm.synced_folder "..", "/vagrant", 
+        type: "nfs", nfs_version: 3
+  end
+
+  config.vm.network "private_network", ip: "192.168.9.9"
+
+  if Vagrant.has_plugin?("vagrant-cachier")
+     if USE_NFS
+        config.cache.synced_folder_opts = {
+            type: :nfs, nfs_version: 3
+        }
+     end
+  end
+
+  config.vm.provision "shell",
+      path: "setup-testbed.sh"
+
+end
+
+# vim: syntax=ruby
