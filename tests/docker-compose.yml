@@ -15,6 +15,7 @@ services:
       PROFTPD_MYSQL_DB: proftpd@mariadb
       PROFTPD_MYSQL_USER: proftpd
       PROFTPD_MYSQL_PASSWORD: nbusr123
+      PROFTPD_SHOW_ADDRESS: 192.168.9.9
   mariadb:
      image: mariadb:10
      environment:
