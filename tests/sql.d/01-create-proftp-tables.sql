@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS ftpuser (
   passwd varchar(64) NOT NULL,
   homedir varchar(255) NOT NULL,
   count int unsigned NOT NULL DEFAULT 0,
-  accessed datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  accessed datetime DEFAULT NULL,
+  modified datetime DEFAULT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY username (username)
 );
