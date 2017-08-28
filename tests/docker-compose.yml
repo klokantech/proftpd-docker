@@ -10,7 +10,7 @@ services:
     ports:
       - "20:20"
       - "21:21"
-      - "20020:20080"
+      - "20020-20080:20020-20080"
     environment:
       PROFTPD_MYSQL_DB: proftpd@mariadb
       PROFTPD_MYSQL_USER: proftpd
