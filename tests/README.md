@@ -17,3 +17,7 @@ Try FTP in the second terminal window
     ftp 192.168.9.9
     user: test
     pass test
+
+Cleanup
+
+    vagrant destroy
