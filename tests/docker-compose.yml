@@ -4,7 +4,6 @@ services:
   proftp:
     build: 
       context: ..
-      dockerfile: Dockerfile.proftpd
     image: klokan/proftpd
     restart: "no"
     ports:
