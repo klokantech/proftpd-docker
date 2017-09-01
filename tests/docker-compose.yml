@@ -15,6 +15,13 @@ services:
       PROFTPD_MYSQL_USER: proftpd
       PROFTPD_MYSQL_PASSWORD: nbusr123
       PROFTPD_SHOW_ADDRESS: 192.168.9.9
+       
+    volumes: 
+      # add FTP certificates
+      - /etc/pki/ftp/ftp.crt:/etc/pki/ftpd.crt
+      - /etc/pki/ftp/ftp.key:/etc/pki/ftpd.key
+      - /etc/pki/ftp/ca.crt:/etc/pki/ca.crt
+
   mariadb:
      image: mariadb:10
      environment:
