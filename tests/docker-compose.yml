@@ -11,6 +11,7 @@ services:
       - "21:21"
       - "20020-20080:20020-20080"
     environment:
+      # add FP
       PROFTPD_MYSQL_DB: proftpd@mariadb
       PROFTPD_MYSQL_USER: proftpd
       PROFTPD_MYSQL_PASSWORD: nbusr123
@@ -21,6 +22,9 @@ services:
       - /etc/pki/ftp/ftp.crt:/etc/pki/ftpd.crt
       - /etc/pki/ftp/ftp.key:/etc/pki/ftpd.key
       - /etc/pki/ftp/ca.crt:/etc/pki/ca.crt
+
+      # add FTP root (according to tables)
+      - ./ftpdata/:/ftp/
 
   mariadb:
      image: mariadb:10
